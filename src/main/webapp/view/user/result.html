@@ -1,0 +1,37 @@
+<link href="${rc.contextPath}/css/shopping.css" rel="stylesheet">
+<link href="${rc.contextPath}/css/style.css" rel="stylesheet"
+	type="text/css">
+<div id="spyl" class="provide">
+		<div
+			class="col-sm-12 provide-left provide-one hvr-shutter-out-horizontal"
+			style="width: 100%;">
+			<h5>
+				<span class="glyphicon glyphicon-shopping-cart pull-leftt">&nbsp;&nbsp;</span>商品搜索结果
+			</h5>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="gallery">
+		<div class="container">
+			<div class="gallery-main">
+				<div class="gallery-top">
+					<ul style="list-style: outside none none;">
+						#foreach(${product} in ${product})
+						<li>
+							<div class="col-md-3 gallery-top-left">
+								<a href="javascript:detail('$!{product.id}')"
+									class="b-link-stripe b-animate-go  thickbox"> <img
+									class="port-pic" src="${rc.contextPath}/images/product/$!{product.id}s1.jpg">
+									<div class="b-wrapper">
+										<h2 class="b-animate b-from-left b-from b-delay03 ">
+											<span>$!{product.name}</span>
+										</h2>
+									</div>
+								</a>
+							</div>
+						</li> #end
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>

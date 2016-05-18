@@ -1,0 +1,55 @@
+<link rel="stylesheet" type="text/css"
+	href="${rc.contextPath}/css/login_user.css" />
+<script src="${rc.contextPath}/js/login_user.js"></script>
+<script src="${rc.contextPath}/js/jQuery.md5.js"></script>
+<style>
+body {
+	height: 100%;
+	background: #16a085;
+	overflow: hidden;
+}
+
+canvas {
+	z-index: -1;
+	position: absolute;
+}
+</style>
+<!-- 定义列表 -->
+<dl class="admin_login">
+	<!-- 定义列表中的项目 -->
+	<dt>
+		<strong>欢迎登陆超市购物系统</strong>
+	</dt>
+	<!-- 定义列表中项目的描述 -->
+	<dd style="height: 25px;">
+		<p>
+			<a href="javascript:regist()">注册新用户？</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+				href="#">忘记密码？</a>
+		</p>
+	</dd>
+	<!-- 手机账号 -->
+	<dd class="user_icon">
+		<input id="phone" type="text" placeholder="账号" class="login_txtbx" />
+	</dd>
+	<!-- 密码 -->
+	<dd class="pwd_icon">
+		<input id="password" type="password" placeholder="密码"
+			class="login_txtbx" />
+	</dd>
+	<!-- 登录按钮 -->
+	<dd>
+		<button onclick="javascript:login()" type="button" class="submit_btn">立即登陆</button>
+	</dd>
+	<!-- 管理员登录页面跳转 -->
+	<dd>
+		<p>
+			<!-- 此处调用login-admin（）的JavaScript程序 -->
+			<a href="javascript:login_admin()">管理员登陆入口</a>
+		</p>
+
+	</dd>
+	<dd>
+		<p>Copyright&copy;2016.ZhuShanshan</p>
+		<p></p>
+	</dd>
+</dl>

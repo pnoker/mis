@@ -1,0 +1,272 @@
+<link href="${rc.contextPath}/css/shopping.css" rel="stylesheet">
+<link href="${rc.contextPath}/css/style.css" rel="stylesheet"
+	type="text/css">
+<script src="${rc.contextPath}/js/responsiveslides.min.js"></script>
+<script src="${rc.contextPath}/js/more.js"></script>
+<script>
+	$(function() {
+		$("#slider5").responsiveSlides({
+			auto : true,
+			pager : true,
+			nav : true,
+			speed : 500,
+			namespace : "callbacks",
+			before : function() {
+				$('.events').append("<li>before event fired.</li>");
+			},
+			after : function() {
+				$('.events').append("<li>after event fired.</li>");
+			}
+		});
+
+	});
+</script>
+<div class="header" id="home">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Sansan</span> <span class="icon-bar"></span>
+					<span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="javascript:back('$!{product.type}')"><img
+					src="${rc.contextPath}/images/back.png" alt="" /></a>
+			</div>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="javascript:index()"
+						class="hvr-bounce-to-top">超市首页<span class="sr-only">(current)</span></a></li>
+					<li><a href="#spyl" class="hvr-bounce-to-top">食品饮料</a></li>
+					<li><a href="#mrhl" class="hvr-bounce-to-top">美容护理</a></li>
+					<li><a href="#lyfs" class="hvr-bounce-to-top">粮油副食</a></li>
+					<li><a href="#jtqj" class="hvr-bounce-to-top">家庭清洁</a></li>
+					<li><a href="#sxsg" class="hvr-bounce-to-top">生鲜水果</a></li>
+					<li><a href="#myyp" class="hvr-bounce-to-top">母婴用品</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</nav>
+</div>
+<div class="music">
+	<div class="col-md-5 music-left">
+		<div id="top" class="callbacks_container">
+			<ul class="rslides" id="slider5">
+				<li><img
+					src="${rc.contextPath}/images/product/$!{product.id}s1.jpg" alt=""></li>
+				<li><img
+					src="${rc.contextPath}/images/product/$!{product.id}s2.jpg" alt=""></li>
+				<li><img
+					src="${rc.contextPath}/images/product/$!{product.id}s3.jpg" alt=""></li>
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="col-md-7 music-right">
+		<h3>$!{product.title}</h3>
+		<label>RMB&nbsp;：&nbsp;$!{product.price}</label>
+		<div id="demo">
+			<div class="i_box">
+				<span>商品数量&nbsp;:&nbsp;</span>&nbsp;&nbsp;<a href="javascript:;" class="J_minus">-</a><input id="number" type="text"
+					value="1" class="J_input" /><a href="javascript:;" class="J_add">+</a>
+			</div>
+		</div>
+		<div class="m-btn" id="addcheckout">
+			<button type="button" onclick="javascript:checkout('$!{product.id}')"
+				style="color: rgb(252, 252, 252); border: 2px solid rgb(245, 66, 173); background-color: rgb(245, 66, 173); width: 200px; height: 39px;">添加购物车</button>
+		</div>
+		<label></label>
+	</div>
+</div>
+<div id="mrhl" class="provide">
+	<div
+		class="col-sm-12 provide-left provide-one hvr-shutter-out-horizontal"
+		style="width: 100%;">
+		<h5>
+			<span class="glyphicon glyphicon-shopping-cart pull-leftt">&nbsp;&nbsp;</span>商品详情
+		</h5>
+	</div>
+	<div class="clearfix"></div>
+</div>
+<div class="music">
+	<div class="col-md-7 music-right">
+		<ul style="list-style: outside none none;">
+			#foreach(${description} in ${description})
+			<li><img src="${rc.contextPath}/images/product/$!{description}"
+				style="width: 100%;" alt=" "></li>#end
+		</ul>
+	</div>
+	<div class="clearfix"></div>
+</div>
+<div class="footer">
+	<div class="container">
+		<div class="footer-main">
+
+			<div class="col-md-4 footer-left">
+				<p>Copyright&copy;2016.ZhuShanshan</p>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<a href="#home" id="toTop" class="scroll" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+</div>
+
+
+<style>
+.i_box {
+	margin: 10px 20px;
+	font-size: 14px;
+}
+
+.i_box * {
+	vertical-align: middle
+}
+
+.i_box a {
+	padding: 2px 5px;
+	background-color: #e9e9e9;
+	border: 1px solid #ccc;
+	text-decoration: none;
+	color: #585858;
+	line-height: 20px
+}
+
+.i_box a:hover {
+	color: #000
+}
+
+.i_box input {
+	width: 30px;
+	height: 18px;
+	margin: 0 8px;
+	padding: 2px;
+	border: 1px solid #ccc;
+	text-align: center;
+	line-height: 16px
+}
+</style>
+
+<!--DEMO start-->
+
+<script>
+	$.fn.iVaryVal = function(iSet, CallBack) {
+		/*
+		 * Minus:点击元素--减小
+		 * Add:点击元素--增加
+		 * Input:表单元素
+		 * Min:表单的最小值，非负整数
+		 * Max:表单的最大值，正整数
+		 */
+		iSet = $.extend({
+			Minus : $('.J_minus'),
+			Add : $('.J_add'),
+			Input : $('.J_input'),
+			Min : 0,
+			Max : 20
+		}, iSet);
+		var C = null, O = null;
+		//插件返回值
+		var $CB = {};
+		//增加
+		iSet.Add.each(function(i) {
+			$(this).click(
+					function() {
+						O = parseInt(iSet.Input.eq(i).val());
+						(O + 1 <= iSet.Max) || (iSet.Max == null) ? iSet.Input
+								.eq(i).val(O + 1) : iSet.Input.eq(i).val(
+								iSet.Max);
+						//输出当前改变后的值
+						$CB.val = iSet.Input.eq(i).val();
+						$CB.index = i;
+						//回调函数
+						if (typeof CallBack == 'function') {
+							CallBack($CB.val, $CB.index);
+						}
+					});
+		});
+		//减少
+		iSet.Minus.each(function(i) {
+			$(this).click(
+					function() {
+						O = parseInt(iSet.Input.eq(i).val());
+						O - 1 < iSet.Min ? iSet.Input.eq(i).val(iSet.Min)
+								: iSet.Input.eq(i).val(O - 1);
+						$CB.val = iSet.Input.eq(i).val();
+						$CB.index = i;
+						//回调函数
+						if (typeof CallBack == 'function') {
+							CallBack($CB.val, $CB.index);
+						}
+					});
+		});
+		//手动
+		iSet.Input.bind({
+			'click' : function() {
+				O = parseInt($(this).val());
+				$(this).select();
+			},
+			'keyup' : function(e) {
+				if ($(this).val() != '') {
+					C = parseInt($(this).val());
+					//非负整数判断
+					if (/^[1-9]\d*|0$/.test(C)) {
+						$(this).val(C);
+						O = C;
+					} else {
+						$(this).val(O);
+					}
+				}
+				//键盘控制：上右--加，下左--减
+				if (e.keyCode == 38 || e.keyCode == 39) {
+					iSet.Add.eq(iSet.Input.index(this)).click();
+				}
+				if (e.keyCode == 37 || e.keyCode == 40) {
+					iSet.Minus.eq(iSet.Input.index(this)).click();
+				}
+				//输出当前改变后的值
+				$CB.val = $(this).val();
+				$CB.index = iSet.Input.index(this);
+				//回调函数
+				if (typeof CallBack == 'function') {
+					CallBack($CB.val, $CB.index);
+				}
+			},
+			'blur' : function() {
+				$(this).trigger('keyup');
+				if ($(this).val() == '') {
+					$(this).val(O);
+				}
+				//判断输入值是否超出最大最小值
+				if (iSet.Max) {
+					if (O > iSet.Max) {
+						$(this).val(iSet.Max);
+					}
+				}
+				if (O < iSet.Min) {
+					$(this).val(iSet.Min);
+				}
+				//输出当前改变后的值
+				$CB.val = $(this).val();
+				$CB.index = iSet.Input.index(this);
+				//回调函数
+				if (typeof CallBack == 'function') {
+					CallBack($CB.val, $CB.index);
+				}
+			}
+		});
+	}
+	//调用
+	$(function() {
+
+		$('.i_box').iVaryVal({}, function(value, index) {
+			$('.i_tips').html('商品数量为：' + value);
+		});
+
+	});
+</script>
+
